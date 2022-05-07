@@ -29,8 +29,8 @@ desc usuario;
 
 create table maquina(idmaquina int primary key auto_increment,
 nome_maquina varchar (25),
-temp_max char (4),
-temp_min char (4),
+temp_max float,
+temp_min float,
 fk_cliente int,
 foreign key (fk_cliente) references empresas (idcliente));
 
@@ -52,5 +52,7 @@ foreign key (fk_sensor) references sensor (idsensor));
 
 select * from log_temperatura;
 desc sensor;
+
+select * from empresas;
 
 drop database systemp;
