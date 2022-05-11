@@ -3,16 +3,22 @@ use systemp;
 
 create table empresas (idcliente int primary key auto_increment,
 razao_social varchar(50) not null,
-cnpj char(14) unique,
-inscricao_estadual char(9),
-contato_nome varchar(30),
-contato_email varchar (40),
-contato_tel varchar (15),
-contato2_nome varchar(30),
-contato2_email varchar(40),
-contato2_tel varchar(15),
-estado char(2),
-cidade varchar (30));
+cnpj char(14) unique not null,
+inscricao_estadual char(9) not null,
+contato1_nome varchar(30) not null,
+contato1_email varchar (40) not null,
+contato1_tel varchar (15) not null,
+contato2_nome varchar(30) not null,
+contato2_email varchar(40) not null,
+contato2_tel varchar(15) not null,
+cep char(8) not null,
+estado char(2)not null,
+cidade varchar (30) not null,
+bairro varchar (45) not null,
+rua varchar (45) not null,
+numero char (5) not null,
+complemento varchar (20)
+);
 
 select * from empresa;
 
@@ -54,5 +60,3 @@ select * from log_temperatura;
 desc sensor;
 
 select * from empresas;
-
-drop database systemp;
