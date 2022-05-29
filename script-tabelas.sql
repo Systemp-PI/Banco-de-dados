@@ -20,7 +20,10 @@ numero char (5) not null,
 complemento varchar (20)
 );
 
-select * from empresa;
+insert into empresas values
+(null, '1231313', '11111111111111', '123456789', 'dfhja', 'jsg', '12498724', 'aju', '12748', '12346864', '11111111', 'sp', 'c', 'ah', 'abjfj', '12345', 'ajhjb');
+
+select * from empresas;
 
 create table usuario (idcadastro int primary key auto_increment,
 Nome_usuario varchar(40),
@@ -40,23 +43,33 @@ temp_min float,
 fk_cliente int,
 foreign key (fk_cliente) references empresas (idcliente));
 
+insert into maquina values (null, 'juninho', 40, 20, 1);
+
 select * from maquina;
-
-create table sensor (idsensor int primary key auto_increment,
-fk_maquina int,
-foreign key (fk_maquina) references maquina (idmaquina))
-auto_increment = 1000;
-
-select * from sensor;
-desc sensor;
+select * from log_temperatura;
 
 create table log_temperatura (idregistro int primary key auto_increment,
 registro_temp float,
 data_hora_registro datetime default current_timestamp,
-fk_sensor int,
-foreign key (fk_sensor) references sensor (idsensor));
+fk_maquina int,
+foreign key (fk_maquina) references maquina (idmaquina));
+select * from log_temperatura where fk_maquina= 1;
 
-select * from log_temperatura;
-desc sensor;
+select registro_temp, 
+	DATE_FORMAT(data_hora_registro,'%H:%i:%s') as data_hora_registro,
+     fk_maquina, nome_maquina
+      from log_temperatura
+       join maquina on fk_maquina = idmaquina
+		where fk_maquina = 1
+		order by idregistro ;
 
-select * from empresas;
+select * 
+from maquina 
+join log_temperatura 
+on fk_maquina = idmaquina;
+
+insert into log_temperatura values (null,42,default,1);
+
+SELECT * FROM maquina 
+        join log_temperatura on fk_maquina = idMaquina;
+        truncate table log_temperatura;
