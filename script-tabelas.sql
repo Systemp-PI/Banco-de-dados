@@ -1,4 +1,4 @@
-create database systemp; 
+create database systemp;
 use systemp;
 
 create table empresas (idcliente int primary key auto_increment,
@@ -20,9 +20,6 @@ numero char (5) not null,
 complemento varchar (20)
 );
 
-insert into empresas values
-(null, '1231313', '11111111111111', '123456789', 'dfhja', 'jsg', '12498724', 'aju', '12748', '12346864', '11111111', 'sp', 'c', 'ah', 'abjfj', '12345', 'ajhjb');
-
 select * from empresas;
 
 create table usuario (idcadastro int primary key auto_increment,
@@ -31,7 +28,9 @@ CNPJ char(14),
 email varchar(50),
 senha varchar(30),
 fk_cliente int,
-foreign key (fk_cliente) references empresas (idcliente));
+foreign key (fk_cliente) references empresas (idcliente),
+fk_admin int,
+foreign key (fk_admin) references usuario (idcadastro));
 
 select * from usuario;
 desc usuario;
@@ -43,7 +42,7 @@ temp_min float,
 fk_cliente int,
 foreign key (fk_cliente) references empresas (idcliente));
 
-insert into maquina values (null, 'juninho', 40, 20, 1);
+insert into maquina values (null, 'maquina 1', 40, 20, 1);
 
 select * from maquina;
 select * from log_temperatura;
